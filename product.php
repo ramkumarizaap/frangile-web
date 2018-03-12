@@ -42,7 +42,7 @@
 										Price : <b>Rs.<?=$value['price'];?></b>
 									</div>
 									<div class="farmer-name">
-										<a href="#myModal" data-toggle="modal" class="btn btn-danger">Order Now</a>
+										<a href="#myModal" data-toggle="modal" data-farmer-id="<?=$value['farmer_id'];?>" data-crop-id="<?=$value['crop_id'];?>" class="btn btn-danger order-modal">Order Now</a>
 									</div>
 								</li>
 							<?php
@@ -82,14 +82,18 @@
       	else
       	{
       		?>
-      		<div class="form-group">
-      		<div class="col-md-12">
-      			<label class="control-label">Quantity</label>
-      		</div>
-      		<div class="col-md-4">
-      			<input type="text" class="form-control">
-      		</div>
-      		</div>
+      		<form action="" method="post">
+      		<input type="" name="farmer_id">
+      		<input type="" name="crop_id">
+	      		<div class="form-group">
+		      		<div class="col-md-12">
+		      			<label class="control-label">Quantity</label>
+		      		</div>
+		      		<div class="col-md-4">
+		      			<input type="text" class="form-control">
+		      		</div>
+	      		</div>
+	      	</form>
       		<?php
       	}
       	?>

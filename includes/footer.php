@@ -25,6 +25,13 @@
 				  var filterValue = $(this).attr('data-filter');
 				  $('.crops').isotope({ filter: filterValue });
 				});
+
+			$(".order-modal").click(function(){
+				farmer_id = $(this).attr("data-farmer-id");
+				crop_id = $(this).attr("data-crop-id");
+				$("#myModal form input[name='farmer_id']").val(farmer_id);
+				$("#myModal form input[name='crop_id']").val(crop_id);
+			});
 			
 		});
 	</script>
