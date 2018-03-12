@@ -1,13 +1,23 @@
 <div class="row top-header">
 	<div class="col-md-12">
 		<div class="col-md-3 float-left">
-			<ul>
-				<li><a href="#">Sign In</a></li>
+			<?php if(!isset($_SESSION['user'])){?>
+			<ul class="header-menu">
+				<li><a href="<?=$base_url;?>login.php">Sign In</a></li>
 				<li><a href="#">Sign Up</a></li>
 			</ul>
+			<?php }?>
 		</div>
-		<div class="col-md-3 float-right">
-			<h3>Welcome, <span class="name">Guest</span></h3>
+		<div class="user-dropdown col-md-3 float-right">
+			<h3>Welcome, 
+				<span class="name"><?=isset($_SESSION['user'])?$_SESSION['user']['name']:"Guest";?></span>
+			</h3>
+			<?php if(isset($_SESSION['user'])){?>
+			<ul class='user-menu'>
+				<li><a href="<?=$base_url;?>orders.php">My Orders</a></li>
+				<li><a href="<?=$base_url;?>logout.php">Logout</a></li>
+			</ul>
+			<?php }?>
 		</div>
 	</div>
 </div>

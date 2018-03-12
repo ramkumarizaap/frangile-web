@@ -54,4 +54,19 @@ function get_user_data()
 	else
 		return null;
 }
+function check_login($mail,$password)
+{
+	global $con;
+	$sql = mysqli_query($con,"select * from users where email='".$mail."' and password='".$password."'");
+	if(mysqli_num_rows($sql))
+	{
+		$r = mysqli_fetch_array($sql);
+		$_SESSION['user'] = $r;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 ?>
