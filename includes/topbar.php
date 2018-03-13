@@ -33,7 +33,7 @@
 		<ul>
 			<li><a href="<?=$base_url;?>">Crops</a></li>
 			<li><a href="#">Farmers</a></li>
-			<li><a href="#">Abouts Us</a></li>
+			<li><a href="#">About Us</a></li>
 			<li><a href="#">Contact Us</a></li>
 		</ul>
 	</div>

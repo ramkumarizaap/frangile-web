@@ -32,8 +32,33 @@
 				$("#myModal form input[name='farmer_id']").val(farmer_id);
 				$("#myModal form input[name='crop_id']").val(crop_id);
 			});
-			
+			$("form#OrderForm").submit(function(e){
+				e.preventDefault();
+				var form = $("form#OrderForm").serializeArray();
+				console.log(form);
+				$.ajax({
+					type:"POST",
+					url:"<?=$base_url;?>includes/ajax-form.php",
+					data:form,
+					dataType:'json',
+					success:function(data)
+					{
+						console.log(data);
+						alert(data.msg);
+						if(data.status=='success')
+							window.location.href= "<?=$base_url;?>orders.php";
+						else
+							window.location.href='';
+					},
+					error:function(err)
+					{
+						console.log(err);
+					}
+				});
+			});
 		});
 	</script>
+	 
+
 
 </html>

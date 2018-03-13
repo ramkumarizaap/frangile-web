@@ -295,3 +295,4 @@ p.error
 	cursor: pointer;
 	color: red;
 }
+#map {height: 400px;width: 100%;}

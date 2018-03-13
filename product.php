@@ -59,7 +59,7 @@
 	</div>
 	<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
+  	<form id="OrderForm" action="" method="post">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -82,7 +82,6 @@
       	else
       	{
       		?>
-      		<form action="" method="post">
       		<input type="hidden" name="farmer_id">
       		<input type="hidden" name="crop_id">
 	      		<div class="form-group">
@@ -90,10 +89,9 @@
 		      			<label class="control-label">Quantity</label>
 		      		</div>
 		      		<div class="col-md-4">
-		      			<input type="text" class="form-control">
+		      			<input type="text" name="quantity" class="form-control">
 		      		</div>
 	      		</div>
-	      	</form>
       		<?php
       	}
       	?>
@@ -104,13 +102,13 @@
       	if($user!='' || $user!=null)
       	{
       		?>
-        	<button type="button" class="btn btn-danger">Order</button>
+        	<button type="submit" class="btn btn-danger">Order</button>
         		<?php
         }
         ?>
       </div>
     </div>
-
+  </form>
   </div>
 </div>
 </body>
