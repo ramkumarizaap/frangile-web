@@ -4,7 +4,7 @@
 			<?php if(!isset($_SESSION['user'])){?>
 			<ul class="header-menu">
 				<li><a href="<?=$base_url;?>login.php">Sign In</a></li>
-				<li><a href="#">Sign Up</a></li>
+				<li><a href="<?=$base_url;?>signup.php">Sign Up</a></li>
 			</ul>
 			<?php }?>
 		</div>

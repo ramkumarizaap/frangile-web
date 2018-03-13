@@ -69,4 +69,30 @@ function check_login($mail,$password)
 		return false;
 	}
 }
+function check_email($mail)
+{
+	global $con;
+	$sql = mysqli_query($con,"select * from users where email='".$mail."'");
+	if(mysqli_num_rows($sql))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+function user_register($mail,$password,$name,$phone)
+{
+	global $con;
+	$sql = mysqli_query($con,"insert into users(name,phone,email,password,role)values('".$name."','".$phone."','".$mail."','".$password."',2)");
+	if($sql)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 ?>

@@ -83,8 +83,8 @@
       	{
       		?>
       		<form action="" method="post">
-      		<input type="" name="farmer_id">
-      		<input type="" name="crop_id">
+      		<input type="hidden" name="farmer_id">
+      		<input type="hidden" name="crop_id">
 	      		<div class="form-group">
 		      		<div class="col-md-12">
 		      			<label class="control-label">Quantity</label>
