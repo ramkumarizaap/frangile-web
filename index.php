@@ -6,6 +6,7 @@
 <body>
 	<div class="wrapper">
 	<?php require('includes/topbar.php');?>
+	<?php if((isset($_SESSION['user']) && $_SESSION['user']['role']!='2') || (!isset($_SESSION['user']))){?>
 	<div class="banner">
 		<div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
         <div data-src="assets/images/slides/slider1.jpg">
@@ -19,6 +20,7 @@
         <div data-src="assets/images/slides/slider5.png">
         </div>
     </div>
+    <?php }?>
 	</div>
 	<div class="clearfix"></div><br>
 	<div class="container">

@@ -13,17 +13,21 @@
 .top-header ul.header-menu li
 {
 	display: inline-block;
-	width: 70px;
+	width: 115px;
 }
 .top-header ul.header-menu li a
 {
 	text-decoration: none;
 	color: #fff;
 }
-.top-header ul.header-menu li:nth-child(1)::after
+.top-header ul.header-menu li::after
 {
 	content: "|";
-	margin-left: 10px;
+	margin-left: 20px;
+}
+.top-header ul.header-menu li:nth-child(3)::after
+{
+	content: "";
 }
 .top-header h3
 {

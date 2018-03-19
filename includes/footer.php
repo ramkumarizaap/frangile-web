@@ -1,12 +1,19 @@
+
 <script type="text/javascript" src="<?=$base_url;?>assets/js/jquery.js"></script>
 <script type="text/javascript" src="<?=$base_url;?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?=$base_url;?>assets/js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="<?=$base_url;?>assets/js/camera.min.js"></script>
 <script type="text/javascript" src="<?=$base_url;?>assets/js/isotope.pkgd.min.js"></script>
 <script type="text/javascript" src="<?=$base_url;?>assets/js/isotope-docs.js"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  // new google.translate.TranslateElement({includedLanguages: 'ta,en' ,pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
   <script>
 		$(function(){
-			
+		
 			$('#camera_wrap_4').camera({
 				height: '400px',
 				loader: 'bar',
@@ -32,6 +39,7 @@
 				$("#myModal form input[name='farmer_id']").val(farmer_id);
 				$("#myModal form input[name='crop_id']").val(crop_id);
 			});
+			
 			$("form#OrderForm").submit(function(e){
 				e.preventDefault();
 				var form = $("form#OrderForm").serializeArray();

@@ -14,6 +14,23 @@ function get_crops()
 	}
 	return $result;
 }
+function get_farmer_crops($id)
+{
+	global $con;
+	$i=0;$result = array();
+	$sql = mysqli_query($con,"select a.*,a.id as row_id,b.name as crop,b.image,b.id as crop_id from farmer_crops a,crops b where a.crop_id=b.id and a.farmer_id='".$id."'");
+	while ($r=mysqli_fetch_array($sql))
+	{
+		$result[$i]['id'] = $r['row_id'];
+		$result[$i]['crop'] = $r['crop'];
+		$result[$i]['crop_id'] = $r['crop_id'];
+		$result[$i]['filter_name'] = strtolower($r['crop']);
+		$result[$i]['quantity'] = strtolower($r['quantity']);
+		$result[$i]['image'] = $r['image'];
+		$i++;
+	}
+	return $result;
+}
 function get_crop_by_id($id='')
 {
 	global $con;
@@ -24,6 +41,21 @@ function get_crop_by_id($id='')
 	$result['name'] = $r['name'];
 	$result['filter_name'] = strtolower($r['name']);
 	$result['image'] = $r['image'];
+	return $result;
+}
+
+function get_farmer_crop_by_id($id='')
+{
+	global $con;
+	$result = array();
+	$sql = mysqli_query($con,"select a.*,a.id as row_id,b.name as crop,b.image from farmer_crops a,crops b where a.crop_id=b.id and a.crop_id='".$id."'");
+	$r=mysqli_fetch_array($sql);
+	$result['id'] = $r['id'];
+	$result['row_id'] = $r['row_id'];
+	$result['name'] = $r['crop'];
+	$result['image'] = $r['image'];
+	$result['quantity'] = $r['quantity'];
+	$result['price'] = $r['price'];
 	return $result;
 }
 
@@ -58,6 +90,21 @@ function check_login($mail,$password)
 {
 	global $con;
 	$sql = mysqli_query($con,"select * from users where email='".$mail."' and password='".$password."'");
+	if(mysqli_num_rows($sql))
+	{
+		$r = mysqli_fetch_array($sql);
+		$_SESSION['user'] = $r;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+function check_farmer_login($aadhar)
+{
+	global $con;
+	$sql = mysqli_query($con,"select * from users where uid='".$aadhar."'");
 	if(mysqli_num_rows($sql))
 	{
 		$r = mysqli_fetch_array($sql);
