@@ -84,6 +84,7 @@
       		?>
       		<input type="hidden" name="farmer_id">
       		<input type="hidden" name="crop_id">
+      		<input type="hidden" name="type" value="order">
 	      		<div class="form-group">
 		      		<div class="col-md-12">
 		      			<label class="control-label">Quantity</label>

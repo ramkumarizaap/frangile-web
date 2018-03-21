@@ -142,10 +142,15 @@ function user_register($mail,$password,$name,$phone)
 		return false;
 	}
 }
-function get_orders($user_id='')
+function get_orders($user_id='',$type="")
 {
+	$where ="";
+	if($type=="user")
+		$where = "a.user_id='".$user_id."'";
+	else if($type=="farmer")
+		$where = "a.farmer_id='".$user_id."'";
 	global $con;$result = array();$i=0;
-	$sql = mysqli_query($con,"select a.*,a.id as order_id,b.name as crop_name from orders a,crops b where a.user_id='".$user_id."' and a.crop_id=b.id");
+	$sql = mysqli_query($con,"select a.*,a.id as order_id,b.name as crop_name from orders a,crops b where $where and a.crop_id=b.id");
 	if(mysqli_num_rows($sql))
 	{
 		while($r = mysqli_fetch_array($sql))
@@ -164,10 +169,15 @@ function get_orders($user_id='')
 		return false;
 	}
 }
-function get_order_by_id($id='')
+function get_order_by_id($id='',$role='')
 {
+	$where = "";
+	if($role=='2')
+		$where = "a.user_id=c.id";
+	else if($role=='1')
+		$where = "a.farmer_id=c.id";
 	global $con;
-	$sql = mysqli_query($con,"select a.*,b.*,b.name as crop_name,a.created_date as ordered_date,c.name as farmer_name,c.city,c.state,c.address1,c.address2,c.phone,c.zip from orders a,crops b,users c where a.crop_id=b.id and a.id='".$id."' and a.farmer_id=c.id");
+	$sql = mysqli_query($con,"select a.*,b.*,b.name as crop_name,a.created_date as ordered_date,c.name as farmer_name,c.city,c.state,c.address1,c.address2,c.phone,c.zip from orders a,crops b,users c where a.crop_id=b.id and a.id='".$id."' and $where");
 	if(mysqli_num_rows($sql))
 	{
 		$r = mysqli_fetch_array($sql);

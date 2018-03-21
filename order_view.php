@@ -4,7 +4,7 @@
 	require('includes/functions.php');
 	if($_SESSION['user'])
 	{
-		$orders = get_order_by_id($_GET['id']);
+		$orders = get_order_by_id($_GET['id'],$_SESSION['user']['role']);
 		$address = $orders['address1']." ".$orders['address2']." ".$orders['city']." ".$orders['state']." ".$orders['zip'];
 		 $geo = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($address).'&sensor=false');
 		 $geo = json_decode($geo, true);
@@ -44,7 +44,11 @@
 					</div>
 				</div>
 				<div class="farmer-list row">
+					<?php if($_SESSION['user']['role']=="1"){?>
 					<h3>Seller Details</h3>
+					<?php } else if($_SESSION['user']['role']=="2"){?>
+					<h3>Buyer Details</h3>
+					<?php }?>
 					<div class="col-md-12">
 						<p>Seller Name : <b><?=$orders['farmer_name'];?></b></p>
 						<p>Phone : <b><?=$orders['phone'];?></b></p>

@@ -4,7 +4,7 @@
 	require('includes/functions.php');
 	if($_SESSION['user'])
 	{
-		$orders = get_orders($_SESSION['user']['id'],"user");
+		$orders = get_orders($_SESSION['user']['id'],"farmer");
 	}
 ?>
 <body>

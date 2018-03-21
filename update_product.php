@@ -29,7 +29,7 @@
 	</div>
 	<div id="qtyModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-  	<form id="QuantityForm" action="" method="post">
+  	<form id="QuantityForm" action="" method="post">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -52,7 +52,8 @@
       	else
       	{
       		?>
-      		<input type="" name="row_id">
+      		  <input type="hidden" name="row_id">
+            <input type="hidden" name="type" value="quantity">
 	      		<div class="form-group">
 		      		<div class="col-md-12">
 		      			<label class="control-label">Quantity</label>
@@ -77,7 +78,7 @@
       	if($user!='' || $user!=null)
       	{
       		?>
-        	<button type="submit" class="btn btn-danger">Order</button>
+        	<button type="submit" class="btn btn-danger">Update</button>
         		<?php
         }
         ?>

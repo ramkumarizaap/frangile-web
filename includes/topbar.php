@@ -16,7 +16,11 @@
 			</h3>
 			<?php if(isset($_SESSION['user'])){?>
 			<ul class='user-menu'>
-				<li><a href="<?=$base_url;?>orders.php">My Orders</a></li>
+				<?php if($_SESSION['user']['role']=="1"){?>
+					<li><a href="<?=$base_url;?>orders.php">My Orders</a></li>
+					<?php }else if($_SESSION['user']['role']=='2'){?>
+					<li><a href="<?=$base_url;?>my_orders.php">My Orders</a></li>
+					<?php }?>
 				<li><a href="<?=$base_url;?>logout.php">Logout</a></li>
 			</ul>
 			<?php }?>
@@ -34,10 +38,12 @@
 	<div class="col-md-8 menu-div">
 		<ul>
 			<?php if(isset($_SESSION['user']) && $_SESSION['user']['role']=="2"){?>
-			<li><a href="<?=$base_url;?>">Crops</a></li>
-			<li><a href="#">My Orders</a></li>
+			<li><a href="<?=$base_url;?>crop_list.php">Crops</a></li>
+			<li><a href="<?=$base_url;?>my_orders.php">My Orders</a></li>
 			<?php 
-				}?>
+				}else{?>
+				<li><a href="<?=$base_url;?>">Crops</a></li>
+				<?php }?>
 		</ul>
 	</div>
 </div>

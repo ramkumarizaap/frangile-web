@@ -32,12 +32,16 @@ function googleTranslateElementInit() {
 				  var filterValue = $(this).attr('data-filter');
 				  $('.crops').isotope({ filter: filterValue });
 				});
-
+			
 			$(".order-modal").click(function(){
 				farmer_id = $(this).attr("data-farmer-id");
 				crop_id = $(this).attr("data-crop-id");
 				$("#myModal form input[name='farmer_id']").val(farmer_id);
 				$("#myModal form input[name='crop_id']").val(crop_id);
+			});
+			$(".quantity-modal").click(function(){
+				id = $(this).attr("data-row-id");
+				$("#qtyModal form input[name='row_id']").val(id);
 			});
 			
 			$("form#OrderForm").submit(function(e){
@@ -57,6 +61,28 @@ function googleTranslateElementInit() {
 							window.location.href= "<?=$base_url;?>orders.php";
 						else
 							window.location.href='';
+					},
+					error:function(err)
+					{
+						console.log(err);
+					}
+				});
+			});
+
+			$("form#QuantityForm").submit(function(e){
+				e.preventDefault();
+				var form = $("form#QuantityForm").serializeArray();
+				console.log(form);
+				$.ajax({
+					type:"POST",
+					url:"<?=$base_url;?>includes/ajax-form.php",
+					data:form,
+					dataType:'json',
+					success:function(data)
+					{
+						console.log(data);
+						alert(data.msg);
+						window.location.href='';
 					},
 					error:function(err)
 					{
