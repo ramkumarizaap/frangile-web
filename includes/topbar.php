@@ -41,7 +41,7 @@
 			<li><a href="<?=$base_url;?>crop_list.php">Crops</a></li>
 			<li><a href="<?=$base_url;?>my_orders.php">My Orders</a></li>
 			<?php 
-				}else{?>
+				}else {?>
 				<li><a href="<?=$base_url;?>">Crops</a></li>
 				<?php }?>
 		</ul>
